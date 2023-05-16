@@ -16,12 +16,26 @@ class TaskManagement extends ChangeNotifier {
       text: text,
       creationDate: DateTime.now(),
     ));
-    taskList.sort((a, b) => a.creationDate.compareTo(b.creationDate));
     notifyListeners();
   }
 
   void deleteTask(ListModel task) {
     taskList.remove(task);
+    notifyListeners();
+  }
+
+  void sortTaskByCreationDate() {
+    taskList.sort();
+    notifyListeners();
+  }
+
+  void sortTasksAlphabetically() {
+    taskList.sort((a, b) => a.text.compareTo(b.text));
+    notifyListeners();
+  }
+
+  void sortTasksByStatus() {
+    taskList.sort((a, b) => a.status.index.compareTo(b.status.index));
     notifyListeners();
   }
 }

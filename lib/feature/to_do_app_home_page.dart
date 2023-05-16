@@ -4,8 +4,10 @@ import 'package:todo_list_app/provider/task_management.dart';
 import 'package:todo_list_app/utils/app_theme.dart';
 import 'package:todo_list_app/utils/spacing.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_list_app/widget/task_status_dialog.dart';
 import 'package:todo_list_app/widget/confirm_delete.dart';
+import 'package:todo_list_app/widget/floating_action_button.dart';
+import 'package:todo_list_app/widget/sort_task_dialog.dart';
+import 'package:todo_list_app/widget/task_status_dialog.dart';
 import 'add_task_view.dart';
 
 class TodoAppHomePage extends StatelessWidget {
@@ -97,13 +99,22 @@ class TodoAppHomePage extends StatelessWidget {
               ],
             ),
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () => showModalBottomSheet(
+          floatingActionButton: CustomFloatingActionButton(
+            onAddPressed: () => showModalBottomSheet(
               context: context,
               builder: (context) => AddTaskView(addTask: taskManagement.addTask),
             ),
-            backgroundColor: Colors.black54,
-            child: const Icon(Icons.add),
+            onSortPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => SortTasksDialog(
+                  taskManagement: taskManagement,
+                  onSortByCreationDate: () => taskManagement.sortTaskByCreationDate(),
+                  onSortAlphabetically: () => taskManagement.sortTasksAlphabetically(),
+                  onSortByStatus: () => taskManagement.sortTasksByStatus(),
+                ),
+              );
+            },
           ),
         );
       },
