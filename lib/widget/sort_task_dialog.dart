@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list_app/provider/task_management.dart';
+import 'package:todo_list_app/utils/string_constants.dart';
 
 class SortTasksDialog extends StatelessWidget {
   const SortTasksDialog({
@@ -18,30 +19,33 @@ class SortTasksDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Sort Tasks'),
+      title: const Text(sortTaskLabel),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           ElevatedButton(
+            style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.teal)),
             onPressed: () {
               onSortByCreationDate();
               Navigator.pop(context);
             },
-            child: const Text('Sort by Creation Date'),
+            child: const Text(sortCreationDateLabel),
           ),
           ElevatedButton(
+            style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.teal)),
             onPressed: () {
               onSortAlphabetically();
               Navigator.pop(context);
             },
-            child: const Text('Sort Alphabetically'),
+            child: const Text(sortAlphabeticallyLabel),
           ),
           ElevatedButton(
+            style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.teal)),
             onPressed: () {
               onSortByStatus();
               Navigator.pop(context);
             },
-            child: const Text('Sort by Status'),
+            child: const Text(sortStatusLabel),
           ),
         ],
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list_app/model/list_model.dart';
 import 'package:todo_list_app/utils/app_theme.dart';
+import 'package:todo_list_app/utils/string_constants.dart';
 
 class ConfirmationDialog extends StatelessWidget {
   const ConfirmationDialog({
@@ -15,12 +16,12 @@ class ConfirmationDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Confirm Delete'),
-      content: const Text('Are you sure you want to delete this task?'),
+      title: const Text(confirmDeleteLabel),
+      content: const Text(deleteTaskLabel),
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: Text('Cancel', style: ToDoAppTheme.lightTextTheme.bodySmall),
+          child: Text(cancelLabel, style: ToDoAppTheme.lightTextTheme.bodySmall),
         ),
         TextButton(
           onPressed: () {
@@ -28,7 +29,7 @@ class ConfirmationDialog extends StatelessWidget {
             Navigator.pop(context);
           },
           child: Text(
-            'Delete',
+            deleteLabel,
             style: ToDoAppTheme.lightTextTheme.bodySmall,
           ),
         ),
