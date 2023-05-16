@@ -19,7 +19,7 @@ extension TaskStatusExtension on TaskStatus {
   }
 }
 
-class ListModel {
+class ListModel implements Comparable<ListModel> {
   final String text;
   final DateTime creationDate;
   TaskStatus status;
@@ -29,4 +29,9 @@ class ListModel {
     required this.creationDate,
     this.status = TaskStatus.pending,
   });
+
+  @override
+  int compareTo(ListModel other) {
+    return creationDate.compareTo(other.creationDate);
+  }
 }
