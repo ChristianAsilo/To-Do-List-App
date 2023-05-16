@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:todo_list_app/feature/app_theme.dart';
+import 'package:todo_list_app/utils/app_theme.dart';
 import 'package:todo_list_app/utils/spacing.dart';
+
+import 'add_task_view.dart';
 
 class TodoAppHomePage extends StatelessWidget {
   const TodoAppHomePage({Key? key}) : super(key: key);
@@ -35,7 +37,7 @@ class TodoAppHomePage extends StatelessWidget {
                   const VerticalSpacing(height: 20),
                   Text(
                     'To-Do List Apps',
-                    style: ToDoAppTheme.LightTextTheme.displayMedium,
+                    style: ToDoAppTheme.lightTextTheme.displayMedium,
                   ),
                 ],
               ),
@@ -54,7 +56,10 @@ class TodoAppHomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => showModalBottomSheet(
+          context: context,
+          builder: (context) => const AddTaskView(),
+        ),
         backgroundColor: Colors.black54,
         child: const Icon(Icons.add),
       ),
