@@ -16,7 +16,7 @@ class ToDoAppTheme {
       color: Colors.black,
     ),
     bodySmall: TextStyle(
-      fontSize: 20,
+      fontSize: 16,
       color: Colors.black,
     ),
   );
