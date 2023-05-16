@@ -3,7 +3,9 @@ import 'package:todo_list_app/utils/app_theme.dart';
 import 'package:todo_list_app/utils/spacing.dart';
 
 class AddTaskView extends StatefulWidget {
-  const AddTaskView({Key? key}) : super(key: key);
+  const AddTaskView({this.addTask, Key? key}) : super(key: key);
+
+  final Function(String)? addTask;
 
   @override
   State<AddTaskView> createState() => _AddTaskViewState();
@@ -36,7 +38,7 @@ class _AddTaskViewState extends State<AddTaskView> {
             ),
             const VerticalSpacing(height: 20),
             TextButton(
-              onPressed: () {},
+              onPressed: () => addTask(),
               style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.black54)),
               child: Text(
                 'Add Task',
@@ -47,5 +49,12 @@ class _AddTaskViewState extends State<AddTaskView> {
         ),
       ),
     );
+  }
+
+  void addTask() {
+    if (_addTaskController.text.isNotEmpty && widget.addTask != null) {
+      widget.addTask!(_addTaskController.text);
+      Navigator.pop(context);
+    }
   }
 }
