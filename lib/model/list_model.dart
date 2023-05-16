@@ -1,20 +1,23 @@
+import 'package:todo_list_app/utils/string_constants.dart';
+
 enum TaskStatus {
   done,
   pending,
   inProgress,
 }
 
+//Display Task Status Label
 extension TaskStatusExtension on TaskStatus {
   String get statusText {
     switch (this) {
       case TaskStatus.done:
-        return 'Done';
+        return doneLabel;
       case TaskStatus.pending:
-        return 'Pending';
+        return pendingLabel;
       case TaskStatus.inProgress:
-        return 'In Progress';
+        return inProgressLabel;
       default:
-        return '';
+        return emptyString;
     }
   }
 }

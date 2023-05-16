@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list_app/model/list_model.dart';
 import 'package:todo_list_app/utils/app_theme.dart';
+import 'package:todo_list_app/utils/string_constants.dart';
 
 class TaskStatusDialog extends StatefulWidget {
   final ListModel task;
@@ -30,13 +31,13 @@ class TaskStatusDialogState extends State<TaskStatusDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Update Task Status'),
+      title: const Text(updateStatusLabel),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           RadioListTile<TaskStatus>(
-            title: const Text('Done'),
+            title: const Text(doneLabel),
             value: TaskStatus.done,
             groupValue: _selectedStatus,
             onChanged: (value) {
@@ -48,7 +49,7 @@ class TaskStatusDialogState extends State<TaskStatusDialog> {
             },
           ),
           RadioListTile<TaskStatus>(
-            title: const Text('Pending'),
+            title: const Text(pendingLabel),
             value: TaskStatus.pending,
             groupValue: _selectedStatus,
             onChanged: (value) {
@@ -60,7 +61,7 @@ class TaskStatusDialogState extends State<TaskStatusDialog> {
             },
           ),
           RadioListTile<TaskStatus>(
-            title: const Text('In Progress'),
+            title: const Text(inProgressLabel),
             value: TaskStatus.inProgress,
             groupValue: _selectedStatus,
             onChanged: (value) {
@@ -82,7 +83,7 @@ class TaskStatusDialogState extends State<TaskStatusDialog> {
             Navigator.pop(context);
           },
           child: Text(
-            'Update',
+            updateLabel,
             style: ToDoAppTheme.lightTextTheme.bodySmall,
           ),
         ),
